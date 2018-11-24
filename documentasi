@@ -1,0 +1,28 @@
+API fractal
+
+
+1. instal laravel
+    jika menggunakan laravel 5.5 maka anda wajib menyeting reaport string-nya
+    buka folder {app/provider/AppServiceProvider.php}
+
+    setelah itu setting (.env)
+
+2. install fractal (github.com/spatie/laravel-fractal) 
+3. setting database {migration}
+    buka file migrate users tambahkan {$table->string('api_token');}
+    lalu buat satu lagi {make:model Post -m} tambahkan(LIHAT DI FOLDER database/migrations)
+4. kita buat {make:controller UserController} (LIHAT DI FOLDER app/http/controller)
+5. kita buat Route(LIHAT DI FOLDER route/api.php)
+6. lalu kita cek (php artisan serve) lalu buka posman(GET = http://127.0.0.1:8000/api/users)
+
+
+---------SEKARANG KITA GUNAKAN (FRACTAL) NYA-----------
+1. kita buat folder (make:transformer UserTrnsformers) dalam folder (app)
+   lalu di dalam UserController kita memanggil UserTransformers
+2. kita buat (make:controller AuthController) ini unutuk mengirim data kedalam database(regirter)
+    -----jangan lupa tambahkan (api_token) di model user biar ngak error-------
+3. lalu kita buat Route_nya lalu buka posmen
+
+--------SEKARANG KITA BUAT LOGIN--------
+1. buka file AuthController 
+2. lalu kita buat Route_nya dan  buka posmen
