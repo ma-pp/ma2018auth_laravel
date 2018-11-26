@@ -45,8 +45,8 @@ class UserController extends Controller
             $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            // 'password' => 'required|string|min:6',
+            // 'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
 
         ]);
 
@@ -87,5 +87,18 @@ class UserController extends Controller
         }
 
         return response()->json(compact('user'));
+    }
+    
+    public function open() 
+    {
+        $data = "This data is open and can be accessed without the client being authenticated";
+        return response()->json(compact('data'),200);
+
+    }
+
+    public function logout() 
+    {
+        $data = "Hanya pengguna yang berwenang dapat melihat ini";
+        return response()->json(compact('data'),200);
     }
 }

@@ -13,7 +13,7 @@ class DataController extends Controller
 
     }
 
-    public function closed() 
+    public function logout() 
     {
         $data = "Only authorized users can see this";
         return response()->json(compact('data'),200);
