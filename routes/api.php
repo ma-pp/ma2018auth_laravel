@@ -2,13 +2,10 @@
 
 use Illuminate\Http\Request;
 
-Route::post('register', 'UserController@register');
-Route::post('login', 'UserController@login');
-// Route::get('open', 'DataController@open');
-
-Route::group(['middleware' => ['jwt.verify']], function() {
-    Route::get('user', 'UserController@getAuthenticatedUser');  
-    Route::get('logout', 'UserController@logout');
-    
-}); 
+Route::post('register', 'AuthController@register');
+Route::post('login', 'AuthController@login');
+Route::post('recover', 'AuthController@recover');
+Route::group(['middleware' => ['jwt.auth']], function() {
+    Route::get('logout', 'AuthController@logout');
+});
 
